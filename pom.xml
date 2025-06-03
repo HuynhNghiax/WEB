@@ -166,6 +166,11 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.20.0</version>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet.jsp</groupId>
+			<artifactId>jakarta.servlet.jsp-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 
 		<!-- ✚ Thêm Log4j2 JDBC Appender -->
 		<dependency>

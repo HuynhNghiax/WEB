@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class FacebookCallbackServlet extends HttpServlet {
     private static final String CLIENT_ID = "your_client";
     private static final String CLIENT_SECRET = "your_client";
-    private static final String REDIRECT_URI = "http://localhost:8080/DoAnLTWeb/facebook-callback";
+    private static final String REDIRECT_URI = "https://web-a66k.onrender.com/facebook-callback";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String code = request.getParameter("code");

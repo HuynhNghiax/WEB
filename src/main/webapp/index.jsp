@@ -128,7 +128,7 @@
 <script>
      function addToCart(productId) {
          $.ajax({
-             url: 'http://localhost:8080/DoAnLTWeb/AddToCartServlet',
+             url: 'https://web-a66k.onrender.com/AddToCartServlet',
              method: 'POST',
              data: {
                  productId: productId,

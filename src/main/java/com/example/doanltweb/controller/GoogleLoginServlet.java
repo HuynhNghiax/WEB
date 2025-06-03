@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.*;
 public class GoogleLoginServlet extends HttpServlet {
     private static final String CLIENT_ID = "your_id";
     private static final String CLIENT_SECRET = "your_secret";
-    private static final String REDIRECT_URI = "http://localhost:8080/DoAnLTWeb/callback";
+    private static final String REDIRECT_URI = "https://web-a66k.onrender.com/callback";
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String googleAuthUrl = "https://accounts.google.com/o/oauth2/auth"
                 + "?client_id=" + CLIENT_ID

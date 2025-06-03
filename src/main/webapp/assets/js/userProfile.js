@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Gửi dữ liệu bằng jQuery AJAX
 		$.ajax({
-			url: "http://localhost:8080/DoAnLTWeb/UserProfileServlet",
+			url: "https://web-a66k.onrender.com/UserProfileServlet",
 			method: "POST",
 			data: formData,
 			processData: false,

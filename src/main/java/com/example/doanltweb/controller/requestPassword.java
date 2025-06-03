@@ -35,7 +35,7 @@
          resetService service = new resetService();
          String token = service.generateToken();
          
-         String linkReset = "http://localhost:8080/DoAnLTWeb/resetPassword?token="+token;
+         String linkReset = "https://web-a66k.onrender.com/resetPassword?token="+token;
          
          TokenForgetPassword newTokenForget = new TokenForgetPassword(
                  user.getId(), false, token, service.expireDateTime());

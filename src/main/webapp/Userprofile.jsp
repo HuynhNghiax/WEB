@@ -333,7 +333,7 @@
             const formData = new FormData(form);
 
             // Gửi dữ liệu qua AJAX
-            fetch("http://localhost:8080/DoAnLTWeb/UserProfileServlet", {
+            fetch("https://web-a66k.onrender.com/UserProfileServlet", {
                 method: "POST",
                 body: formData
             })
@@ -368,7 +368,7 @@
 
                 const formData = new FormData(changePasswordForm);
 
-                fetch("http://localhost:8080/DoAnLTWeb/UserProfileServlet?action=changePassword", {
+                fetch("https://web-a66k.onrender.com/UserProfileServlet?action=changePassword", {
                     method: "POST",
                     body: formData
                 })

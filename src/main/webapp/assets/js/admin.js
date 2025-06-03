@@ -29,7 +29,7 @@ function loadProductData() {
         10: 'Công ty J'
     };
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/productController', // API của bạn
+        url: 'https://web-a66k.onrender.com/productController', // API của bạn
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -136,7 +136,7 @@ function addProduct(event) {
 
     // Gửi AJAX
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/productController',
+        url: 'https://web-a66k.onrender.com/productController',
         type: 'POST',
         data: JSON.stringify(productData),
         contentType: 'application/json',
@@ -219,7 +219,7 @@ function editProduct(event) {
     // Gửi yêu cầu PUT để cập nhật sản phẩm
 
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/productController?id=' + pid,  // API xử lý PUT sửa sản phẩm
+        url: 'https://web-a66k.onrender.com/productController?id=' + pid,  // API xử lý PUT sửa sản phẩm
         type: 'PUT',
         data: JSON.stringify(productData),
         contentType: 'application/json',
@@ -243,7 +243,7 @@ $(document).off('click', '.product-delete-btn').on('click', '.product-delete-btn
 
     if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
         $.ajax({
-            url: 'http://localhost:8080/DoAnLTWeb/productController?id=' + productId,
+            url: 'https://web-a66k.onrender.com/productController?id=' + productId,
             type: 'DELETE',
             success: function (response) {
                 alert(response.message);
@@ -276,7 +276,7 @@ function loadSaleData() {
     };
 
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/SaleController', // API của bạn
+        url: 'https://web-a66k.onrender.com/SaleController', // API của bạn
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -369,7 +369,7 @@ $(document).ready(function () {
 
         // Gửi dữ liệu lên servlet qua POST
         $.ajax({
-            url: 'http://localhost:8080/DoAnLTWeb/SaleController',
+            url: 'https://web-a66k.onrender.com/SaleController',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(saleData),
@@ -451,7 +451,7 @@ $('#editPromotionForm').off('submit').on('submit', function (e) {
     };
 
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/SaleController',
+        url: 'https://web-a66k.onrender.com/SaleController',
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(updatedSale),
@@ -500,7 +500,7 @@ function loadUserData() {
     };
 
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/UserManagerController',
+        url: 'https://web-a66k.onrender.com/UserManagerController',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

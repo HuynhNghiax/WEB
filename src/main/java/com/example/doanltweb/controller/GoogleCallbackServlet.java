@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class GoogleCallbackServlet extends HttpServlet {
     private static final String CLIENT_ID = "your_id";
     private static final String CLIENT_SECRET = "your_secret";
-    private static final String REDIRECT_URI = "http://localhost:8080/DoAnLTWeb/callback";
+    private static final String REDIRECT_URI = "http://https://web-a66k.onrender.com/callback";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String code = request.getParameter("code");

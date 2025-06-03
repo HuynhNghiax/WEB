@@ -1,31 +1,13 @@
-# ================================
-# Stage 1: Build WAR file with Maven
-# ================================
-FROM maven:3.9.6-eclipse-temurin-21 AS builder
-
-# Tạo thư mục làm việc
+# Stage 1: Build WAR bằng Maven
+FROM maven:3.8.5-openjdk-17-slim AS builder
 WORKDIR /app
-
-# Copy toàn bộ source code vào container
 COPY . .
-
-# Chạy Maven để build WAR file (bỏ qua test để tránh lỗi nếu chưa config test)
 RUN mvn clean package -DskipTests
 
-
-# ================================
-# Stage 2: Deploy WAR vào Tomcat 10.1 + Java 21
-# ================================
+# Stage 2: Copy WAR vào Tomcat
 FROM tomcat:10.1.33-jdk21
-
-# Xoá ứng dụng mặc định của Tomcat để tránh xung đột
+# Xóa app mặc định (nếu muốn sạch)
 RUN rm -rf /usr/local/tomcat/webapps/*
-
-# Copy WAR từ builder stage sang thư mục webapps của Tomcat
-COPY --from=builder /WEB/target/DoAnLTWeb-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
-
-# Mở cổng 8080
+# Copy WAR build từ stage 1
+COPY --from=builder /app/target/DoAnLTWeb-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
-
-# Lệnh chạy mặc định
-CMD ["catalina.sh", "run"]

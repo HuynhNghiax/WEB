@@ -13,51 +13,46 @@ public class JDBIConnect {
 
     public static Jdbi get() {
         if (jdbi == null) {
-            makeConnect();
+            try {
+                makeConnect();
+            } catch (SQLException e) {
+                throw new RuntimeException("Không thể kết nối DB", e);
+            }
         }
         return jdbi;
     }
 
-    private static void makeConnect() {
-        // Tạo URL JDBC từ DBProperties
-        String host = DBProperties.host();
-        int port = DBProperties.port();
-        String dbname = DBProperties.dbname();
-        String options = DBProperties.option();
+    public static void makeConnect() throws SQLException {
+        MysqlDataSource ds = new MysqlDataSource();
+        ds.setServerName(DBProperties.HOST);
+        ds.setPort(Integer.parseInt(DBProperties.PORT));
+        ds.setDatabaseName(DBProperties.DBNAME);
+        ds.setUser(DBProperties.USERNAME);
+        ds.setPassword(DBProperties.PASSWORD);
 
-        if (host == null || dbname == null || DBProperties.username() == null || DBProperties.password() == null) {
-            throw new RuntimeException("Missing required DB environment variables.");
-        }
-
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + dbname;
-        if (options != null && !options.isEmpty()) {
-            url += "?" + options;
-        }
-
-        MysqlDataSource src = new MysqlDataSource();
-        src.setURL(url);
-        src.setUser(DBProperties.username());
-        src.setPassword(DBProperties.password());
-
+        // Cấu hình SSL (vì Aiven yêu cầu sslMode=REQUIRED)
+        ds.setUseSSL(true);
+        ds.setRequireSSL(true);
+        ds.setVerifyServerCertificate(false); // Có thể bật lại nếu bạn cài chứng chỉ CA
         try {
-            src.setUseCompression(true);
-            src.setAutoReconnect(true);
+            ds.setAutoReconnect(true);
+            ds.setUseCompression(true);
         } catch (SQLException e) {
-            throw new RuntimeException("Error configuring data source", e);
+            throw new RuntimeException(e);
         }
 
-        jdbi = Jdbi.create(src);
+        jdbi = Jdbi.create(ds);
     }
 
     public static void main(String[] args) {
         List<Product> products = JDBIConnect.get()
                 .withHandle(handle -> handle.createQuery("SELECT * FROM product").mapToBean(Product.class).list());
-        System.out.println("Product list:");
+        System.out.println("Danh sách sản phẩm:");
         products.forEach(System.out::println);
 
         List<User> users = JDBIConnect.get()
                 .withHandle(handle -> handle.createQuery("SELECT * FROM user").mapToBean(User.class).list());
-        System.out.println("User list:");
+        System.out.println("Danh sách người dùng:");
         users.forEach(System.out::println);
     }
 }

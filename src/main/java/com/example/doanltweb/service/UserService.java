@@ -25,7 +25,9 @@ public class UserService {
     public boolean updateVerifiedStatus(int id, int isVerified) {
         return userDao.updateVerifiedStatus(id, isVerified);
     }
-
+    public boolean updateRoleAndStatus(int id, int idPermission, int isVerified) {
+        return userDao.updateRoleAndStatus(id, idPermission, isVerified);
+    }
     public static void main(String[] args) {
         UserService userService = new UserService();
         List<User> userList = userService.getUserList();

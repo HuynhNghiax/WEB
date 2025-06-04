@@ -11,13 +11,13 @@ import java.util.Map;
 public class StockInUtils {
     StockInDao stockInDao = new StockInDao();
 
-    public Map<Product,Integer> stockInRecord(){
+    public Map<Integer,Integer> stockInRecord(){
         List<StockIn> list = stockInDao.getAllRecord();
-        Map<Product,Integer> stockInRecord = new HashMap<Product,Integer>();
+        Map<Integer,Integer> stockInRecord = new HashMap<Integer,Integer>();
         for (StockIn stockIn : list) {
             Product product = stockIn.getProduct();
-            int currentQty = stockInRecord.getOrDefault(product, 0);
-            stockInRecord.put(product, currentQty + stockIn.getQuantity());
+            int currentQty = stockInRecord.getOrDefault(product.getId(), 0);
+            stockInRecord.put(product.getId(), currentQty + stockIn.getQuantity());
         }
         return stockInRecord;
     }

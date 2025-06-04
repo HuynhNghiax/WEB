@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.doanltweb.dao.ProductDao;
+import com.example.doanltweb.dao.StockInDao;
 import com.example.doanltweb.dao.model.Product;
 import com.example.doanltweb.service.ProductService;
+import com.example.doanltweb.utils.OrderUtils;
+import com.example.doanltweb.utils.StockInUtils;
 import com.google.gson.Gson;
 import jakarta.servlet.http.*;
 import jakarta.servlet.ServletException;
@@ -15,6 +18,9 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "ProductPaginationServlet", value = "/ProductPaginationServlet")
 public class ProductPaginationServlet extends HttpServlet {
+    StockInUtils stockInUtils = new StockInUtils();
+    OrderUtils orderUtils = new OrderUtils();
+
     private static final int PAGE_SIZE = 12;
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int page = 1;
@@ -28,6 +34,15 @@ public class ProductPaginationServlet extends HttpServlet {
 
         ProductDao dao = new ProductDao();
         List<Product> products = dao.getProductsByPageAndSort(offset, PAGE_SIZE, sort);
+        Map<Integer, Integer> stockInMap = stockInUtils.stockInRecord(); // Map<productId, imported>
+        Map<Integer, Integer> detailMap = orderUtils.orderRecord();      // Map<productId, sold>
+        for (Product product : products) {
+            int imported = stockInMap.getOrDefault(product.getId(), 0);
+            int sold = detailMap.getOrDefault(product.getId(), 0);
+            int remaining = imported - sold;
+            product.setStock(remaining);
+
+        }
         int totalProducts = dao.getTotalProducts();
         int totalPages = (int) Math.ceil((double) totalProducts / PAGE_SIZE);
 

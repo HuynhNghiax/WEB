@@ -19,39 +19,39 @@ public class OrderUtils {
 	public String genOTP() {
 		return"";
 	}
-	
+
 	public boolean sendMail(String orderInfo) {
 		return false;
 	}
-	
+
 	public void updateStatus(OrderDao orderDao) {
 		List<Order> orders = orderDao.getAllOrder(); // hoặc getOrdersByUser()
 
 		for (Order order : orders) {
-		    if (order.getStatus().equals("PENDING")) {
-		    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		    	String orderDateStr = order.getOrderDate();
-		    	LocalDateTime createdAt = LocalDateTime.parse(orderDateStr, formatter);
+			if (order.getStatus().equals("PENDING")) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+				String orderDateStr = order.getOrderDate();
+				LocalDateTime createdAt = LocalDateTime.parse(orderDateStr, formatter);
 
-		    	LocalDateTime now = LocalDateTime.now();
+				LocalDateTime now = LocalDateTime.now();
 
-		    	if (createdAt.plusDays(1).isBefore(now)) {
-		    	    order.setStatus("CANCELLED");
-		    	    orderDao.updateStatus(order.getId(), "CANCELLED");
-		    	}
+				if (createdAt.plusDays(1).isBefore(now)) {
+					order.setStatus("CANCELLED");
+					orderDao.updateStatus(order.getId(), "CANCELLED");
+				}
 
 
-		    }
+			}
 		}
 	}
 
-	public Map<Product,Integer> orderRecord(){
+	public Map<Integer,Integer> orderRecord(){
 		List<OrderDetail> details = orderDao.getAllDetail();
-		Map<Product,Integer> orderRecord = new HashMap<Product,Integer>();
+		Map<Integer,Integer> orderRecord = new HashMap<Integer,Integer>();
 		for (OrderDetail detail : details) {
 			Product product = detail.getProduct();
-			int currentQty = orderRecord.getOrDefault(product, 0);
-			orderRecord.put(product, currentQty + detail.getQuantity());
+			int currentQty = orderRecord.getOrDefault(product.getId(), 0);
+			orderRecord.put(product.getId(), currentQty + detail.getQuantity());
 		}
 		return orderRecord;
 	}

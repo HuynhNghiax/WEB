@@ -324,7 +324,18 @@ public boolean updateUser(String fullname, String email, String address, String 
 
 
 //        userDao.lockUserByUsername("admin");
-
+public boolean updateRoleAndStatus(int id, int idPermission, int isVerified) {
+    String sql = "UPDATE user SET idPermission = :idPermission, is_verified = :isVerified WHERE id = :id";
+    Jdbi jdbi = JDBIConnect.get();
+    int rows = jdbi.withHandle(handle ->
+            handle.createUpdate(sql)
+                    .bind("id", id)
+                    .bind("idPermission", idPermission)
+                    .bind("isVerified", isVerified)
+                    .execute()
+    );
+    return rows > 0;
+}
 
     public static void main(String[] args) {
     }

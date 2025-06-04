@@ -575,15 +575,10 @@ $(document).on('click', '.user-edit-btn', function (event) {
     const row = $(this).closest('tr');
     const id = $(this).data('id');
 
-    // Lấy dữ liệu từng cột
-    const username = row.find('td:eq(2)').text();
-    const fullname = row.find('td:eq(3)').text();
-    const email = row.find('td:eq(4)').text();
-    const phone = row.find('td:eq(5)').text();
-    const address = row.find('td:eq(6)').text();
+    // Lấy text của quyền và trạng thái
     const permissionText = row.find('td:eq(7)').text().trim();
     const verifiedText = row.find('td:eq(8)').text().trim();
-    const avatar = row.find('td:eq(1)').find('img').attr('src');
+
 
     // Mapping quyền (idPermission)
     const permissionMap = {
@@ -594,46 +589,26 @@ $(document).on('click', '.user-edit-btn', function (event) {
     };
 
     // Chuyển quyền và trạng thái xác thực từ text sang số
-    const idPermission = permissionMap[permissionText] || 2;  // Mặc định là "Khách hàng"
-    const isVerified = (verifiedText === 'Đã xác thực') ? 1 : 0;
+    const idPermission = permissionMap[permissionText] || 2;  // Mặc định Khách hàng
 
-    // Gán dữ liệu vào form
+    const isVerified = verifiedText === 'Hoạt động' ? 1 : 0;
+    // Gán dữ liệu vào form (chỉ 3 trường)
     $('#editUserId').val(id);
-    $('#editUsername').val(username);
-    $('#editFullname').val(fullname);
-    $('#editEmail').val(email);
-    $('#editPhone').val(phone);
-    $('#editAddress').val(address);
     $('#editPermission').val(idPermission);
     $('#editVerified').val(isVerified);
-    $('#editAvatar').val(avatar); // Link ảnh đại diện
 
     // Hiển thị modal
     $('#editUserModal').modal('show');
 });
 
-// Khi modal đóng, xóa backdrop và khôi phục cuộn trang
-$('#editUserModal').on('hidden.bs.modal', function () {
-    $('.modal-backdrop').remove();
-    $('body').css('overflow', 'auto');  // Khôi phục khả năng cuộn trang
-});
-
-// Xử lý khi gửi form sửa người dùng
 $('#editUserForm').off('submit').on('submit', function (e) {
     e.preventDefault();
 
     const updatedUser = {
         id: parseInt($('#editUserId').val()),
-        username: $('#editUsername').val(),
-        fullname: $('#editFullname').val(),
-        email: $('#editEmail').val(),
-        phone: $('#editPhone').val(),
-        address: $('#editAddress').val(),
         idPermission: parseInt($('#editPermission').val()),
-        isVerified: parseInt($('#editVerified').val()),
-        avatar: $('#editAvatar').val()
+        isVerified: parseInt($('#editVerified').val())
     };
-
     // Gửi yêu cầu PUT để cập nhật người dùng
     $.ajax({
         url: 'https://web-a66k.onrender.com/UserManagerController',

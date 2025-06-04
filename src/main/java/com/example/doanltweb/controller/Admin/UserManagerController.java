@@ -49,7 +49,6 @@ public class UserManagerController extends HttpServlet {
         JsonObject jsonResponse = new JsonObject();
 
         try (BufferedReader reader = request.getReader()) {
-            // Đọc JSON từ body
             StringBuilder jsonBuffer = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -58,24 +57,25 @@ public class UserManagerController extends HttpServlet {
 
             String json = jsonBuffer.toString();
 
-            // Parse JSON thành User object
-            User user = gson.fromJson(json, User.class);
+            JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
 
-            // Kiểm tra ID hợp lệ
-            if (user.getId() <= 0) {
+            int id = jsonObject.get("id").getAsInt();
+            int idPermission = jsonObject.get("idPermission").getAsInt();
+            int isVerified = jsonObject.get("isVerified").getAsInt();
+
+            if (id <= 0) {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 jsonResponse.addProperty("message", "ID người dùng không hợp lệ.");
                 response.getWriter().write(gson.toJson(jsonResponse));
                 return;
             }
 
-            // Gọi service để cập nhật
             UserService userService = new UserService();
-            boolean isUpdated = userService.updateUser(user);
+            boolean isUpdated = userService.updateRoleAndStatus(id, idPermission, isVerified);
 
             if (isUpdated) {
                 response.setStatus(HttpServletResponse.SC_OK);
-                jsonResponse.addProperty("message", "Cập nhật người dùng thành công.");
+                jsonResponse.addProperty("message", "Cập nhật vai trò và trạng thái thành công.");
             } else {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 jsonResponse.addProperty("message", "Không tìm thấy người dùng để cập nhật.");

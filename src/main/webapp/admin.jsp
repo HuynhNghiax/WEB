@@ -103,7 +103,7 @@
             <%--            <a href="#id7" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"--%>
             <%--               data-bs-toggle="tab" role="tab" aria-controls="home" aria-selected="true"><i--%>
             <%--                    class="fa-solid fa-gift"></i> Bảo Hành </a>--%>
-            <a href="/LogoutController"
+            <a href="/DoAnLTWeb/LogoutController"
                class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                aria-selected="true"><i class="fa-solid fa-power-off"></i> Thoát</a>
         </div>
@@ -136,7 +136,7 @@
                                     <i class="fas fa-user me-2"></i>Nghĩa dz
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/LogoutController">Đăng xuất</a></li>
+                                    <li><a class="dropdown-item" href="/DoAnLTWeb/LogoutController">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -551,35 +551,12 @@
                                     <form id="editUserForm">
                                         <input type="hidden" id="editUserId" name="id">
                                         <div class="row g-3">
-                                            <div class="col-md-6">
-                                                <label for="editUsername" class="form-label">Tên đăng nhập</label>
-                                                <input type="text" class="form-control" id="editUsername"
-                                                       name="username" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="editFullname" class="form-label">Họ tên</label>
-                                                <input type="text" class="form-control" id="editFullname"
-                                                       name="fullname">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="editEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="editEmail" name="email">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="editPhone" class="form-label">Số điện thoại</label>
-                                                <input type="text" class="form-control" id="editPhone" name="phone">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="editAddress" class="form-label">Địa chỉ</label>
-                                                <input type="text" class="form-control" id="editAddress" name="address">
-                                            </div>
+
                                             <div class="col-md-6">
                                                 <label for="editPermission" class="form-label">Vai trò</label>
                                                 <select class="form-select" id="editPermission" name="idPermission">
                                                     <option value="1">Admin</option>
                                                     <option value="2">Khách hàng</option>
-                                                    <option value="3">Nhân viên</option>
-                                                    <option value="4">Cộng tác viên</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -589,10 +566,7 @@
                                                     <option value="0">Không hoạt động</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
-                                                <label for="editAvatar" class="form-label">Link ảnh đại diện</label>
-                                                <input type="text" class="form-control" id="editAvatar" name="avatar">
-                                            </div>
+
                                         </div>
                                     </form>
                                 </div>

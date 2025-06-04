@@ -69,7 +69,7 @@ $(document).ready(function() {
 });
 $(document).ready(function(){
     $.ajax({
-        url: "https://web-a66k.onrender.com/trangchu",
+        url: "/trangchu",
         method: "GET",
         success: function(data){
             $("#productList").html(data);

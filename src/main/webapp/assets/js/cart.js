@@ -76,7 +76,7 @@ document.querySelectorAll(".btn-update").forEach(btn => {
         }
 
         $.ajax({
-            url: "/DoAnLTWeb/CartServlet",
+            url: "/CartServlet",
             type: "POST",
             contentType: "application/x-www-form-urlencoded",
             data: {
@@ -103,7 +103,7 @@ document.querySelectorAll(".btn-update").forEach(btn => {
 // Hàm xoá sản phẩm khỏi giỏ hàng
 function removeFromCart(productId) {
     $.ajax({
-        url: '/DoAnLTWeb/RemoveFromCartServlet',
+        url: '/RemoveFromCartServlet',
         type: 'POST',
         contentType: "application/x-www-form-urlencoded",
         data: { productId: productId },

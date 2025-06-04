@@ -636,7 +636,7 @@ $('#editUserForm').off('submit').on('submit', function (e) {
 
     // Gửi yêu cầu PUT để cập nhật người dùng
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/UserManagerController',
+        url: 'https://web-a66k.onrender.com/UserManagerController',
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(updatedUser),
@@ -658,7 +658,7 @@ $(document).off('click', '.user-delete-btn').on('click', '.user-delete-btn', fun
 
     if (confirm("Bạn có chắc chắn muốn xóa?")) {
         $.ajax({
-            url: 'http://localhost:8080/DoAnLTWeb/UserManagerController',
+            url: 'https://web-a66k.onrender.com/UserManagerController',
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify({ id: userId }),
@@ -685,7 +685,7 @@ function loadVoucherData() {
     }
 
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/VoucherController',
+        url: 'https://web-a66k.onrender.com/VoucherController',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -851,7 +851,7 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: 'http://localhost:8080/DoAnLTWeb/VoucherController',
+            url: 'https://web-a66k.onrender.com/VoucherController',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(voucherData),
@@ -992,7 +992,7 @@ $('#editVoucherForm').off('submit').on('submit', function (e) {
 
     // Gửi dữ liệu sửa voucher lên server
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/VoucherController', // URL tới controller sửa voucher
+        url: 'https://web-a66k.onrender.com/VoucherController', // URL tới controller sửa voucher
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(updatedVoucher),
@@ -1032,7 +1032,7 @@ $(document).off('click', '.voucher-delete-btn').on('click', '.voucher-delete-btn
 //---------------------- trang quản lý mua bán-----------------------
 $(document).ready(function(){
     $.ajax({
-        url: 'http://localhost:8080/DoAnLTWeb/dashboard-data', // nhớ thay đổi cho phù hợp
+        url: 'https://web-a66k.onrender.com/dashboard-data', // nhớ thay đổi cho phù hợp
         method: 'GET',
         dataType: 'json',
         success: function(data) {

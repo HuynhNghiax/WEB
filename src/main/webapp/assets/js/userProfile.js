@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function cancelOrder(orderId) {
 	$.ajax({
-		url: '/DoAnLTWeb/CancelOrderServlet',
+		url: '/CancelOrderServlet',
 		type: 'POST',
 		contentType: "application/x-www-form-urlencoded",
 		data: {
@@ -86,7 +86,7 @@ function cancelOrder(orderId) {
 }
 function completeOrder(orderId) {
 	$.ajax({
-		url: '/DoAnLTWeb/OrderController',
+		url: '/OrderController',
 		type: 'POST',
 		contentType: "application/x-www-form-urlencoded",
 		data: {

@@ -103,7 +103,7 @@
             <%--            <a href="#id7" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"--%>
             <%--               data-bs-toggle="tab" role="tab" aria-controls="home" aria-selected="true"><i--%>
             <%--                    class="fa-solid fa-gift"></i> Bảo Hành </a>--%>
-            <a href="/DoAnLTWeb/LogoutController"
+            <a href="/LogoutController"
                class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                aria-selected="true"><i class="fa-solid fa-power-off"></i> Thoát</a>
         </div>
@@ -136,7 +136,7 @@
                                     <i class="fas fa-user me-2"></i>Nghĩa dz
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/DoAnLTWeb/LogoutController">Đăng xuất</a></li>
+                                    <li><a class="dropdown-item" href="/LogoutController">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -25,7 +25,7 @@
             <a href="#id5" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                aria-controls="home" aria-selected="true"><i
                     class="fa-solid fa-gift"></i> Bảo Hành </a>
-            <a href="/DoAnLTWeb/LogoutController" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            <a href="/LogoutController" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                aria-selected="true"><i class="fa-solid fa-power-off"></i> Thoát</a>
         </div>
     </div>

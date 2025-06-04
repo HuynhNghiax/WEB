@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
             } else {
 
             	CartUtils.mergeSessionCartToDb(user.getId(),session);
-                response.sendRedirect("/DoAnLTWeb/index.jsp");
+                response.sendRedirect("/index.jsp");
                 return;
             }
 

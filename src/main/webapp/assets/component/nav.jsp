@@ -31,7 +31,7 @@
 				</li>
 
 				<li class="list-item-head2">
-					<a href="/DoAnLTWeb/CartServlet" class="nav-link icon-cart text-light"> <i class="bi-cart 	"></i></a>
+					<a href="/CartServlet" class="nav-link icon-cart text-light"> <i class="bi-cart 	"></i></a>
 				</li>
 
 				<c:if test="${not empty sessionScope.auth}">
@@ -42,11 +42,11 @@
 						</c:when>
 						<c:otherwise>
 							<li class="list-item-head2"><a
-								href="/DoAnLTWeb/UserProfileServlet"
+								href="/UserProfileServlet"
 								class="nav-link text-light"> ${sessionScope.auth.username} </a></li>
 						</c:otherwise>
 					</c:choose>
-					<li class="list-item-head2"><a href="/DoAnLTWeb/LogoutController"
+					<li class="list-item-head2"><a href="/LogoutController"
 						class="nav-link text-light">Đăng xuất</a></li>
 				</c:if>
 

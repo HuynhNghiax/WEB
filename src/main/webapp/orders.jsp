@@ -167,7 +167,7 @@
 				<div class="modal fade" id="filterModal" tabindex="-1"
 					aria-labelledby="filterModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<form method="GET" class="modal-content" action = "/DoAnLTWeb/OrderFilterController">
+						<form method="GET" class="modal-content" action = "/OrderFilterController">
 							<div class="modal-header">
 								<h5 class="modal-title" id="filterModalLabel">Lọc đơn hàng</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -243,7 +243,7 @@
 			      var formData = new FormData(form); // Lấy dữ liệu từ form
 
 			      $.ajax({
-			        url: '/DoAnLTWeb/OrderController',
+			        url: '/OrderController',
 			        method: 'POST',
 			        data: formData,
 			        processData: false,

@@ -428,7 +428,7 @@
             var messageDiv = $('#verifyMessage');
 
             $.ajax({
-                url: '/DoAnLTWeb/VerifyOrderServlet',
+                url: '/VerifyOrderServlet',
                 type: 'POST',
                 data: {
                     orderId: orderId,

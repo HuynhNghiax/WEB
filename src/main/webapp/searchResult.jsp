@@ -32,7 +32,7 @@
 <header id="header"></header>
 <div
         class="container d-flex justify-content-between align-items-center py-4">
-  <a href="/DoAnLTWeb/index.jsp" class="head-title">AquaTech</a>
+  <a href="/index.jsp" class="head-title">AquaTech</a>
   <form action="Search" method="get" class="d-flex position-relative">
     <input id="searchInput" name="search" type="search" class="form-control me-2" placeholder="Search..." style="width: 300px">
     <input type="submit" value="Search" class="btn bg-dark-blue text-light">
@@ -119,7 +119,7 @@
         var formData = new FormData(form); // Lấy dữ liệu từ form
 
         $.ajax({
-          url: "/DoAnLTWeb/AddToCartServlet",
+          url: "/AddToCartServlet",
           method: "POST",
           data: formData,
           processData: false, // Bắt buộc khi dùng FormData

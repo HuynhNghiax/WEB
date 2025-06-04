@@ -97,7 +97,7 @@
                     <p class="mb-2" id="total-amount"><strong>Tổng số lượng:</strong> ${TotalAmount}</p>
 
                     <!-- Nhập mã giảm giá -->
-                    <form action="/DoAnLTWeb/ApplyVoucherServlet" method="post" class="mb-3">
+                    <form action="/ApplyVoucherServlet" method="post" class="mb-3">
                         <label for="voucherCode" class="form-label"><strong>Mã giảm giá</strong></label>
                         <input type="text" class="form-control mb-2" name="voucherCode" placeholder="Nhập mã giảm giá">
                         <button type="submit" class="btn btn-primary w-100">Áp dụng</button>
@@ -115,7 +115,7 @@
                     <p class="mb-3" id="total-price"><strong>Tổng tiền:</strong> ${TotalPrice} VND</p>
 
                     <!-- Thanh toán -->
-                    <form action="/DoAnLTWeb/CheckoutServlet" method="get" class="text-center mt-3">
+                    <form action="/CheckoutServlet" method="get" class="text-center mt-3">
                         <input type="hidden" name="total-quantity" value="${TotalAmount}">
                         <input type="hidden" name="total-price" value="${TotalPrice}">
 

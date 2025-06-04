@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-      url: "/DoAnLTWeb/LastBoughtProductServlet",
+      url: "/LastBoughtProductServlet",
       method: "GET",
       dataType: "json",
 	  success: function (data) {
